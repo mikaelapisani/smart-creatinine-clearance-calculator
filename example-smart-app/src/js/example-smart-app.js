@@ -52,7 +52,6 @@
 
           // Observations
           lymph = byCodes('26478-8');
-          // Cerner SoF Tutorial Observations
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
@@ -68,8 +67,6 @@
 
           // Observations
           p.lymph = getQuantityValueAndUnit(lymph[0]);
-
-          // Cerner SoF Tutorial Observations
           p.height = getQuantityValueAndUnit(height[0]);
 
           if (typeof systolicbp != 'undefined')  {
@@ -82,7 +79,7 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          if (typeof systolicbp != 'undefined')  {
+          if (typeof tss != 'undefined')  {
             p.tss = tss;
           }
          
@@ -149,7 +146,6 @@
   }
 
       
-  }
 
   window.drawVisualization = function(p) {
     $('#holder').show();
