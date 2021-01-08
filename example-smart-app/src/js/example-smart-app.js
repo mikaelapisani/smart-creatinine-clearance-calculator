@@ -23,7 +23,8 @@
                      'http://loinc.org|2089-1', 
                      'http://loinc.org|55284-4', 
                      'http://loinc.org|26478-8', 
-                     'http://loinc.org|2345-7']
+                     'http://loinc.org|2345-7',
+                     'http://loinc.org|72166-2']
              }
            }
          });
@@ -57,7 +58,7 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-
+          var tss = byCodes('72166-2')
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -67,7 +68,6 @@
 
           // Observations
           p.lymph = getQuantityValueAndUnit(lymph[0]);
-
 
           // Cerner SoF Tutorial Observations
           p.height = getQuantityValueAndUnit(height[0]);
@@ -82,6 +82,10 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
+          if (typeof systolicbp != 'undefined')  {
+            p.tss = tss;
+          }
+         
           console.log('p:');
           console.log(p);
           ret.resolve(p);
@@ -143,6 +147,9 @@
     }
   }
 
+      
+  }
+
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
@@ -159,6 +166,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    $('#tss').html(p.hdl);
   };
 
 })(window);
