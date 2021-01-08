@@ -145,7 +145,7 @@
   }
 
   function getSmokingStatus(ob) {
-      return obj[0].valueCodeableConcept.text
+      return ob.valueCodeableConcept.text
   }
 
       
