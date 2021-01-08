@@ -145,6 +145,15 @@
     }
   }
 
+  function getSmokingStatus(ob) {
+    if (typeof ob != 'undefined' && len(obj)>0) {
+      return obj[0].valueCodeableConcept.text
+    } else {
+      return undefined;
+    }
+
+  }
+
       
 
   window.drawVisualization = function(p) {
