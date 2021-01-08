@@ -24,14 +24,14 @@
          });
 
         // Previous UW values for lymph
-        //var obv = smart.patient.api.fetchAll({
-        //  type: 'Observation',
-        //  query: {
-        //    code: {
-        //      $or: ['http://loinc.org|26478-8', 'http://loinc.org|2345-7']
-        //    }
-        //  }
-        //});
+        var obv = smart.patient.api.fetchAll({
+          type: 'Observation',
+          query: {
+            code: {
+              $or: ['http://loinc.org|26478-8', 'http://loinc.org|2345-7']
+            }
+          }
+        });
 
         console.log('patient:');
         console.log(patient)
@@ -55,7 +55,7 @@
           }
 
           // Observations
-          // lymph = byCodes('26478-8');
+           lymph = byCodes('26478-8');
           // Cerner SoF Tutorial Observations
            var height = byCodes('8302-2');
            var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
@@ -70,8 +70,9 @@
           p.fname = fname;
           p.lname = lname;
 
+
           // Observations
-          //p.lymph = getQuantityValueAndUnit(lymph[0]);
+          p.lymph = getQuantityValueAndUnit(lymph[0]);
 
 
           // Cerner SoF Tutorial Observations
@@ -107,7 +108,7 @@
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
-      // lymph: {value: ''}
+      lymph: {value: ''}
 
       // Cerner SoF Tutorial Observations
       height: {value: ''},
