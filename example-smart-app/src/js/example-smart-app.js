@@ -79,7 +79,9 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.tss = getSmokingStatus(tss[0])
+          if (len(tss)>0) { 
+            p.tss = tss[0].valueCodeableConcept.text
+          }
           
          
           console.log('p:');
@@ -142,13 +144,7 @@
     } else {
       return undefined;
     }
-  }
-
-  function getSmokingStatus(ob) {
-      return ob.valueCodeableConcept.text
-  }
-
-      
+  }      
 
   window.drawVisualization = function(p) {
     $('#holder').show();
