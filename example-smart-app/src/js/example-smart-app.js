@@ -79,9 +79,8 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          if (typeof tss != 'undefined')  {
-            p.tss = tss;
-          }
+          p.tss = getSmokingStatus(tss[0])
+          
          
           console.log('p:');
           console.log(p);
@@ -146,12 +145,7 @@
   }
 
   function getSmokingStatus(ob) {
-    if (typeof ob != 'undefined' && len(obj)>0) {
       return obj[0].valueCodeableConcept.text
-    } else {
-      return undefined;
-    }
-
   }
 
       
