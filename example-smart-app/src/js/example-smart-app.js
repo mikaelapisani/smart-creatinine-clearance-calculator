@@ -79,7 +79,7 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          if (len(tss)>0) { 
+          if (tss.length>0) { 
             p.tss = tss[0].valueCodeableConcept.text
           }
           
@@ -144,7 +144,9 @@
     } else {
       return undefined;
     }
-  }      
+  }     
+
+
 
   window.drawVisualization = function(p) {
     $('#holder').show();
