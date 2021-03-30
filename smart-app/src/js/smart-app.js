@@ -90,6 +90,10 @@
           }
   }
 
+  function isLeapYear(year) {
+    return new Date(year, 1, 29).getMonth() === 1;
+  }
+
   function calculateAge(date) {
     if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
       var d = new Date(date), now = new Date();
@@ -113,7 +117,8 @@
     if (p.gender=='female'){
       isfemale = 1
     }
-    var creatinine_clearance = isfemale
+    var creatinine_clearance = ((140 – p.age) * p.weight * isfemale) / (72 * p.creatinine)
+
     return creatinine_clearance
   };
 
