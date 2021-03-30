@@ -54,7 +54,7 @@
           p.height = getQuantityValueAndUnit(height[0]);
           p.weight = getQuantityValueAndUnit(weight[0]);
           p.creatinine = getQuantityValueAndUnit(creatinine[0]);
-          p.creatinine_clearance = calculate_creatinine_clearance(p)
+          p.creatinine_clearance = ''
           console.log('p:');
           console.log(p);
           ret.resolve(p);
