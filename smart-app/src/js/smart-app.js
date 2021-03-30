@@ -80,7 +80,7 @@
       creatinine:  {value: ''},
       creatinine_clearance: {value: ''},
     };
-  }
+  };
 
   function calculate_creatinine_clearance(p){
     isfemale = 0
@@ -89,7 +89,7 @@
     }
     var creatinine_clearance = (140 – p.age) × (p.weight) × (0.85 x isfemale) / (72 × p.creatinine)
     return creatinine_clearance
-  }
+  };
 
 
 
