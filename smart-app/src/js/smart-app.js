@@ -54,7 +54,7 @@
           p.height = getQuantityValueAndUnit(height[0]);
           p.weight = getQuantityValueAndUnit(weight[0]);
           p.creatinine = getQuantityValueAndUnit(creatinine[0]);
-          p.creatinine_clearance = ''
+          p.creatinine_clearance = calculate_creatinine_clearance(p)
           console.log('p:');
           console.log(p);
           ret.resolve(p);
@@ -83,11 +83,12 @@
   };
 
   function calculate_creatinine_clearance(p){
-    isfemale = 0
+    var isfemale = 0.85
     if (p.gender=='female'){
       isfemale = 1
     }
-    var creatinine_clearance = (140 – p.age) * (p.weight) * (0.85 * isfemale) / (72 * p.creatinine)
+    #
+    var creatinine_clearance = ((140 – p.age) * (p.weight) * isfemale) / (72 * p.creatinine)
     return creatinine_clearance
   };
 
