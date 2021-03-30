@@ -47,13 +47,14 @@
     
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
-          p.age = patient.age;
+          var dob = new Date(patient.birthDate);
+          p.age = parseInt(calculateAge(dob));
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.height = getQuantityValueAndUnit(height[0]);
-          p.weight = getQuantityValueAndUnit(weight[0]);
-          p.creatinine = getQuantityValueAndUnit(creatinine[0]);
+          p.height = getQuantityValueAndUnit(height);
+          p.weight = getQuantityValueAndUnit(weight);
+          p.creatinine = getQuantityValueAndUnit(creatinine);
           p.creatinine_clearance = calculate_creatinine_clearance(p)
           console.log('p:');
           console.log(p);
@@ -81,6 +82,29 @@
       creatinine_clearance: {value: ''},
     };
   };
+
+  function getQuantityValueAndUnit(x){
+    if(typeof x[0] != 'undefined' && typeof x[0].valueQuantity.value != 'undefined' && typeof x[0].valueQuantity.unit != 'undefined') {
+            p.height = x[0].valueQuantity.value + ' ' + x[0].valueQuantity.unit;
+          }
+  }
+
+  function calculateAge(date) {
+    if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
+      var d = new Date(date), now = new Date();
+      var years = now.getFullYear() - d.getFullYear();
+      d.setFullYear(d.getFullYear() + years);
+      if (d > now) {
+        years--;
+        d.setFullYear(d.getFullYear() - 1);
+      }
+      var days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
+      return years + days / (isLeapYear(now.getFullYear()) ? 366 : 365);
+    }
+    else {
+      return undefined;
+    }
+
 
   function calculate_creatinine_clearance(p){
     var isfemale = 0.85
