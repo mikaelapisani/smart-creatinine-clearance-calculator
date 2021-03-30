@@ -76,6 +76,7 @@
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
+      age: {value: ''},
       height: {value: ''},
       weight:  {value: ''},
       creatinine:  {value: ''},
@@ -124,6 +125,7 @@
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
+    $('#age').html(p.creatinine);
     $('#height').html(p.height);
     $('#weight').html(p.weight);
     $('#creatinine').html(p.creatinine);
