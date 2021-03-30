@@ -11,8 +11,6 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
-         console.log('Patient:'); 
-         console.log(pt);
          var obv = smart.patient.api.fetchAll({
            type: 'Observation',
            query: {
@@ -23,10 +21,6 @@
              }
            }
          });
-
-        console.log('patient:');
-        console.log(patient)
-
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
