@@ -3,9 +3,9 @@
   <head>
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-    <title>Test EHR APP</title>
+    <title>Creatinine Clearance Calculator</title>
 
-    <link rel='stylesheet' type='text/css' href='./src/css/example-smart-app.css'>
+    <link rel='stylesheet' type='text/css' href='./src/css/smart-app.css'>
   </head>
   <body>
     <div id='errors'>
@@ -16,7 +16,7 @@
       <div class="bounce3"></div>
     </div>
     <div id='holder' >
-      <h2>Example-SMART-App</h2>
+      <h2>Calculator</h2>
 
       <h2>Patient Resource</h2>
       <table>
@@ -39,39 +39,34 @@
       </table>
       <h2>Observation Resource</h2>
       <table>
+         <tr>
+          <th>Age:</th>
+          <td id='age'></td>
+        </tr>
         <tr>
-          <th>Lymph:</th>
-          <td id='lymph'></td>
+          <th>Weight:</th>
+          <td id='weight'></td>
         </tr>
         <tr>
           <th>Height:</th>
           <td id='height'></td>
         </tr>
         <tr>
-          <th>Systolic Blood Pressure:</th>
-          <td id='systolicbp'></td>
-
+          <th>Creatinine:</th>
+          <td id='creatinine'></td>
         </tr>
-        <tr>
-          <th>Diastolic Blood Pressure:</th>
-          <td id='diastolicbp'></td>
-        </tr>
-        <tr>
-          <th>LDL:</th>
-          <td id='ldl'></td>
-        </tr>
-        <tr>
-          <th>HDL:</th>
-          <td id='hdl'></td>
-        </tr>
-        <tr>
-          <th>Smoking Status:</th>
-          <td id='tss'></td>
       </table>
+       <h2>Calculations</h2>
+       <table>
+        <tr>
+          <th>Creatinine Clearance:</th>
+          <td id='creatinine_clearance'></td>
+        </tr>
+       </table>
     </div>
 
     <!-- Application-level javascript-->
-    <script src='./src/js/example-smart-app.js'></script>
+    <script src='./src/js/smart-app.js'></script>
 
     <!-- FHIR Client JS Library -->
     <script src='./lib/js/fhir-client-v0.1.12.js'></script>
