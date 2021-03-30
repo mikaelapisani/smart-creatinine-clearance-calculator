@@ -18,7 +18,6 @@
              code: {
                $or: ['http://loinc.org|8302-2', #height
                      'http://loinc.org|29463-7', #weight
-                     'http://loinc.org|63900-5', #age 
                      'http://loinc.org|39802-4'] #Creatinine
              }
            }
@@ -31,8 +30,7 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-          var gender = patient.gender;
-
+        
           var fname = '';
           var lname = '';
 
@@ -43,10 +41,12 @@
 
           // Observations
           var height = byCodes('8302-2');
+          var weight = byCodes('29463-7');
           var creatinine = byCodes('39802-4');
     
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
+          p.age = patient.age;
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
