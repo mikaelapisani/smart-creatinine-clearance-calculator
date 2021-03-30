@@ -17,9 +17,9 @@
            type: 'Observation',
            query: {
              code: {
-               $or: ['http://loinc.org|8302-2', #height
-                     'http://loinc.org|29463-7', #weight
-                     'http://loinc.org|39802-4'] #Creatinine
+               $or: ['http://loinc.org|8302-2', 
+                     'http://loinc.org|29463-7', 
+                     'http://loinc.org|39802-4'] 
              }
            }
          });
