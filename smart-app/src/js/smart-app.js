@@ -108,11 +108,12 @@
 
 
   function calculate_creatinine_clearance(p){
-    var isfemale = 0.85
+    var isfemale = 0.85;
     if (p.gender=='female'){
-      isfemale = 1
+      isfemale = 1;
     }
-    var creatinine_clearance = ((140 – p.age) * p.weight * isfemale) / (72 * p.creatinine)
+    console.log(p)
+    var creatinine_clearance = ((140 – p.age) * p.weight * isfemale) / (72 * p.creatinine);
 
     return creatinine_clearance
   };
