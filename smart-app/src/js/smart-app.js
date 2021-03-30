@@ -90,9 +90,6 @@
           }
   }
 
-  function isLeapYear(year) {
-    return new Date(year, 1, 29).getMonth() === 1;
-  }
 
   function calculateAge(date) {
     if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
@@ -110,6 +107,10 @@
       return undefined;
     }
   };
+
+  function isLeapYear(year) {
+    return new Date(year, 1, 29).getMonth() === 1;
+  }
 
 
   function calculate_creatinine_clearance(p){
