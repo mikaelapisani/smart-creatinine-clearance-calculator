@@ -87,7 +87,7 @@
     if (p.gender=='female'){
       isfemale = 1
     }
-    var creatinine_clearance = ((140 – p.age) * (p.weight) * isfemale) / (72 * p.creatinine)
+    var creatinine_clearance = isfemale
     return creatinine_clearance
   };
 
