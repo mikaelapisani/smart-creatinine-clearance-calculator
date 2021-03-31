@@ -130,6 +130,7 @@
   };
 
   window.drawVisualization = function(p) {
+    $('#calculator').hide();
     $('#data').show();
     $('#loading').hide();
     $('#fname').html(p.fname);

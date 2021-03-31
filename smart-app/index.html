@@ -17,7 +17,7 @@
     </div>
     <div id='calculator' >
       <h2>Calculator</h2>
-         <form id="calculations">
+         <form id="calculations" onsubmit="doCalculation">
           <label for="creatinine">Creatinine:</label>
           <input type="text" id="creatinine" name="creatinine"><br><br>
           <input type="submit" value="Calculate">
@@ -71,24 +71,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   
     <script type="text/javascript">
-      $(document).ready(function() {
-        $('#calculations').submit(function(){
-            $('#calculator').hide();
+      function doCalculation(){
             extractData().then(
                 function(p) {
                   drawVisualization(p);  
-                  var div = document.getElementById('data');
-                  if (div.style.display == 'none') {
-                     div.style.display = '';
-                  }
                 },
               function() {
                 $('#loading').hide();
                 $('#errors').html('<p> Failed to call FHIR Service </p>');
               }
             );       
-        });
-    });
+        };
     </script>
   
 
