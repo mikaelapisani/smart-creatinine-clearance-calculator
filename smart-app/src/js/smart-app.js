@@ -49,10 +49,12 @@
           p.fname = fname;
           p.lname = lname;
           var heightValue = getQuantityValue(height);
+          console.log('height')
           console.log(height);
           console.log(heightValue);
           p.height = parseFloat(heightValue);
           var weightValue = getQuantityValue(weight);
+          console.log('weight')
           console.log(weight);
           console.log(weightValue);
           p.weight = weightValue;
