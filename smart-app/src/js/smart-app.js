@@ -1,9 +1,7 @@
 (function(window){
   window.extractData = function() {
-    console.log('extracting data')
     var ret = $.Deferred();
     var creatinine = window.document.getElementById("creatinine").value
-    console.log(creatinine)
 
     function onError() {
       console.log('Loading error', arguments);
@@ -119,9 +117,9 @@
 
 
   function calculate_creatinine_clearance(p){
-    var femaleCte = 0.85;
+    var femaleCte = 1;
     if (p.gender=='female'){
-      isfemale = 1;
+      femaleCte = 0.85;
     }
     console.log(p)
     console.log(p.age)
