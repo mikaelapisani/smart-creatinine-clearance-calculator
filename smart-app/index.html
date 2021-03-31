@@ -71,12 +71,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   
     <script>
-      document.getElementById("calculations").onsubmit = function() {doCalculation()}
-      function doCalculation(){
-            console.log(document.calculations.creatinine.value)
-            $('#calculator').hide();
-            $('#data').show();
-        };
+      $(document).ready(function() {
+          $("#calculations").submit(function() {
+              $("#calculator").hide();
+              extractData().then(
+                function(p) {
+                  drawVisualization(p);
+                  $("#data").show();
+                },
+
+                //Display 'Failed to call FHIR Service' if extractData failed
+                function() {
+                  $('#loading').hide();
+                  $('#errors').html('<p> Failed to call FHIR Service </p>');
+                })
+          });
+      });
     </script>
   
 
