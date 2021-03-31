@@ -1,7 +1,9 @@
 (function(window){
   window.extractData = function() {
+    console.log('extracting data')
     var ret = $.Deferred();
     var creatinine = window.document.getElementById("creatinine").value
+    console.log(creatinine)
 
     function onError() {
       console.log('Loading error', arguments);
@@ -22,6 +24,7 @@
            }
          });
         $.when(pt, obv).fail(onError);
+
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
@@ -49,7 +52,7 @@
           var heightValue = getQuantityValue(height);
           p.height = parseFloat(heightValue);
           var weightValue = getQuantityValue(weight);
-          p.weight = parseFloat(weightValue);
+          p.weight = weightValue;
           p.creatinine = parseFloat(creatinine)
           p.creatinine_clearance = calculate_creatinine_clearance(p)
 
@@ -116,16 +119,16 @@
 
 
   function calculate_creatinine_clearance(p){
-    var femaleCte = 1;
+    var isfemale = 0.85;
     if (p.gender=='female'){
-      femaleCte = 0.85;
+      isfemale = 1;
     }
     console.log(p)
     console.log(p.age)
-    console.log(femaleCte)
+    console.log(isfemale)
     console.log(p.weight)
     console.log(p.creatinine)
-    var creatinine_clearance = ((140 – age) * weight * femaleCte) / (72 * p.creatinine);
+    var creatinine_clearance = 140;
 
     return creatinine_clearance
   };
