@@ -1,82 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-    <title>Creatinine Clearance Calculator</title>
+ <script>
+      document.getElementById("calculations").onsubmit = function() {
+          extractData().then(
+          function(p) {
+            drawVisualization(p);
+          },
 
-    <link rel='stylesheet' type='text/css' href='./src/css/smart-app.css'>
-  </head>
-  <body>
-    <div id='errors'>
-    </div>
-    <div id="loading" class="spinner">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-    </div>
-    <div id='holder' >
-      <h2>Calculator</h2>
-
-      <h2>Patient Data</h2>
-      <table>
-        <tr>
-          <th>First Name:</th>
-          <td id='fname'></td>
-        </tr>
-        <tr>
-          <th>Last Name:</th>
-          <td id='lname'></td>
-        </tr>
-        <tr>
-          <th>Gender:</th>
-          <td id='gender'></td>
-        </tr>
-        <tr>
-          <th>Date of Birth:</th>
-          <td id='birthdate'></td>
-        </tr>
-         <tr>
-          <th>Age:</th>
-          <td id='age'></td>
-        </tr>
-        <tr>
-          <th>Weight:</th>
-          <td id='weight'></td>
-        </tr>
-        <tr>
-          <th>Height:</th>
-          <td id='height'></td>
-        </tr>
-        <tr>
-          <th>Creatinine Clearance:</th>
-          <td id='creatinine_clearance'></td>
-        </tr>
-      </table>
-    </div>
-
-   
-    <!-- Application-level javascript-->
-    <script src='./src/js/smart-app.js'></script>
-
-    <!-- FHIR Client JS Library -->
-    <script src='./lib/js/fhir-client-v0.1.12.js'></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>
-        //Display Patient Demographics and Observations if extractData was success
-        extractData().then(
-        function(p) {
-          drawVisualization(p);
-        },
-
-        //Display 'Failed to call FHIR Service' if extractData failed
-        function() {
-          $('#loading').hide();
-          $('#errors').html('<p> Failed to call FHIR Service </p>');
-        }
-      );
+          //Display 'Failed to call FHIR Service' if extractData failed
+          function() {
+            $('#loading').hide();
+            $('#errors').html('<p> Failed to call FHIR Service </p>');
+          }
+        );
+      };
     </script>
-  </body>
-</html>
-
