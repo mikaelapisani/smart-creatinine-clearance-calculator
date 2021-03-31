@@ -130,7 +130,7 @@
   };
 
   window.drawVisualization = function(p) {
-    $('#holder').show();
+    $('#data').show();
     $('#loading').hide();
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
