@@ -74,6 +74,7 @@
       $(document).ready(function() {
           $("#calculations").submit(function() {
               $("#calculator").hide();
+              console.log(document.calculations.creatinine.value)
               extractData().then(
                 function(p) {
                   drawVisualization(p);
