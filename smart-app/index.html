@@ -17,11 +17,8 @@
     </div>
     <div id='calculator' >
       <h2>Calculator</h2>
-         <form id="calculations">
-          <label for="creatinine">Creatinine:</label>
-          <input type="text" id="creatinine" name="creatinine"><br><br>
-          <input type="submit" value="Calculate">
-        </form>
+         <input type="text" id="creatinine" value="">
+         <button onclick="showData()">Try it</button>
     </div>
     <div id='data' style="display: none">
       <h2>Patient Data</h2>
@@ -71,22 +68,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   
     <script>
-      $(document).ready(function() {
-          $("#calculations").submit(function() {
-              $("#calculator").hide();
-              console.log(document.calculations.creatinine.value)
-              extractData().then(
-                function(p) {
-                  drawVisualization(p);
-                },
+      function showData() {
+        $("#calculator").hide();
+        var creatinine = document.getElementById("creatinine").value
+        console.log(creatinine)
+        extractData().then(
+          function(p) {
+            drawVisualization(p);
+          },
 
-                //Display 'Failed to call FHIR Service' if extractData failed
-                function() {
-                  $('#loading').hide();
-                  $('#errors').html('<p> Failed to call FHIR Service </p>');
-                })
-          });
-      });
+          //Display 'Failed to call FHIR Service' if extractData failed
+          function() {
+            $('#loading').hide();
+            $('#errors').html('<p> Failed to call FHIR Service </p>');
+          })
+      }
     </script>
   
 
