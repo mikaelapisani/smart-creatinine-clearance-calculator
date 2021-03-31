@@ -88,7 +88,7 @@
 
   function getQuantityValue(x){
     if(typeof x[0] != 'undefined' && typeof x[0].valueQuantity.value != 'undefined' && typeof x[0].valueQuantity.unit != 'undefined') {
-            return x[0].valueQuantity.unit;
+            return x[0].valueQuantity.value;
     }
     return ''
   }
