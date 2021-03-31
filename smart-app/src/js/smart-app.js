@@ -14,16 +14,17 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
-         var obv = smart.patient.api.fetchAll({
+        var obv = smart.patient.api.fetchAll({
            type: 'Observation',
            query: {
              code: {
                $or: ['http://loinc.org|8302-2', 
-                     'http://loinc.org|29463-7'] 
+               'http://loinc.org|3141-9'] 
              }
            }
          });
         $.when(pt, obv).fail(onError);
+
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
@@ -38,25 +39,19 @@
 
           // Observations
           var height = byCodes('8302-2');
-          var weight = byCodes('29463-7');
+          var weight = byCodes('3141-9');
           
     
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           var dob = new Date(patient.birthDate);
           p.age = parseFloat(calculateAge(dob));
-          p.gender = gender;
+          p.gender = patient.gender;
           p.fname = fname;
           p.lname = lname;
           var heightValue = getQuantityValue(height);
-          console.log('height')
-          console.log(height);
-          console.log(heightValue);
           p.height = parseFloat(heightValue);
           var weightValue = getQuantityValue(weight);
-          console.log('weight')
-          console.log(weight);
-          console.log(weightValue);
           p.weight = weightValue;
           p.creatinine = parseFloat(creatinine)
           p.creatinine_clearance = calculate_creatinine_clearance(p)
