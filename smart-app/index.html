@@ -72,8 +72,8 @@
   
     <script type="text/javascript">
       $(document).ready(function() {
-        $('#calculator').hide();
         $('#calculations').submit(function(){
+            $('#calculator').hide();
             extractData().then(
                 function(p) {
                   drawVisualization(p);  
