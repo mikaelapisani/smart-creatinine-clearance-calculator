@@ -113,7 +113,11 @@
       isfemale = 1;
     }
     console.log(p)
-    var creatinine_clearance = ((140 – p.age) * p.weight * isfemale) / (72 * p.creatinine);
+    console.log(p.age)
+    console.log(isfemale)
+    console.log(p.weight)
+    console.log(p.creatinine)
+    var creatinine_clearance = 140;
 
     return creatinine_clearance
   };
