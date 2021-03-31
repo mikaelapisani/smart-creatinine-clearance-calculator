@@ -48,8 +48,14 @@
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.height = parseFloat(getQuantityValue(height));
-          p.weight = parseFloat(getQuantityValue(weight));
+          var heightValue = getQuantityValue(height);
+          console.log(height);
+          console.log(heightValue);
+          p.height = parseFloat(heightValue);
+          var weightValue = getQuantityValue(weight);
+          console.log(weight);
+          console.log(weightValue);
+          p.weight = weightValue;
           p.creatinine = parseFloat(creatinine)
           p.creatinine_clearance = calculate_creatinine_clearance(p)
           console.log('p:');
