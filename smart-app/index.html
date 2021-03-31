@@ -72,15 +72,15 @@
   
     <script type="text/javascript">
       $(document).ready(function() {
-        $('#data').hide();
+        $('#calculator').hide();
         $('#calculations').submit(function(){
             extractData().then(
                 function(p) {
+                  drawVisualization(p);  
                   var div = document.getElementById('data');
                   if (div.style.display == 'none') {
                      div.style.display = '';
                   }
-                  drawVisualization(p);  
                 },
               function() {
                 $('#loading').hide();
