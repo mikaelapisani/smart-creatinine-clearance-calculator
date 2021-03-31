@@ -23,7 +23,6 @@
          });
         $.when(pt, obv).fail(onError);
 
-
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
         
@@ -50,7 +49,7 @@
           var heightValue = getQuantityValue(height);
           p.height = parseFloat(heightValue);
           var weightValue = getQuantityValue(weight);
-          p.weight = weightValue;
+          p.weight = parseFloat(weightValue);
           p.creatinine = parseFloat(creatinine)
           p.creatinine_clearance = calculate_creatinine_clearance(p)
 
@@ -126,7 +125,7 @@
     console.log(femaleCte)
     console.log(p.weight)
     console.log(p.creatinine)
-    var creatinine_clearance = (140 – age) * weight * femaleCte / (72 * p.creatinine);
+    var creatinine_clearance = ((140 – age) * weight * femaleCte) / (72 * p.creatinine);
 
     return creatinine_clearance
   };
