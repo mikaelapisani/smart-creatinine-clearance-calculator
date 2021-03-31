@@ -16,8 +16,7 @@
            query: {
              code: {
                $or: ['http://loinc.org|8302-2', 
-                     'http://loinc.org|29463-7', 
-                     'http://loinc.org|39802-4'] 
+                     'http://loinc.org|29463-7'] 
              }
            }
          });
@@ -37,19 +36,17 @@
           // Observations
           var height = byCodes('8302-2');
           var weight = byCodes('29463-7');
-          var creatinine = byCodes('39802-4');
+          
     
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           var dob = new Date(patient.birthDate);
-          p.age = parseInt(calculateAge(dob));
+          p.age = parseFloat(calculateAge(dob));
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.height = getQuantityValueAndUnit(height);
-          p.weight = getQuantityValueAndUnit(weight);
-          p.creatinine = getQuantityValueAndUnit(creatinine);
-          p.creatinine_clearance = calculate_creatinine_clearance(p)
+          p.height = parseFloat(getQuantityValue(height));
+          p.weight = parseFloat(getQuantityValue(weight));
           console.log('p:');
           console.log(p);
           ret.resolve(p);
@@ -78,9 +75,15 @@
     };
   };
 
-  function getQuantityValueAndUnit(x){
+  function getQuantityValue(x){
     if(typeof x[0] != 'undefined' && typeof x[0].valueQuantity.value != 'undefined' && typeof x[0].valueQuantity.unit != 'undefined') {
-            return x[0].valueQuantity.value + ' ' + x[0].valueQuantity.unit;
+            return x[0].valueQuantity.unit;
+    }
+    return ''
+  }
+  function getUnit(x){
+    if(typeof x[0] != 'undefined' && typeof x[0].valueQuantity.value != 'undefined' && typeof x[0].valueQuantity.unit != 'undefined') {
+            return x[0].valueQuantity.unit;
     }
     return ''
   }
@@ -108,7 +111,7 @@
   }
 
 
-  function calculate_creatinine_clearance(p){
+  function calculate_creatinine_clearance(p, creatinine){
     var isfemale = 0.85;
     if (p.gender=='female'){
       isfemale = 1;
@@ -117,7 +120,7 @@
     console.log(p.age)
     console.log(isfemale)
     console.log(p.weight)
-    console.log(p.creatinine)
+    console.log(parseFloat(creatinine))
     var creatinine_clearance = 140;
 
     return creatinine_clearance
@@ -125,7 +128,7 @@
 
 
 
-  window.drawVisualization = function(p) {
+  window.drawVisualization = function(p, creatinine) {
     $('#holder').show();
     $('#loading').hide();
     $('#fname').html(p.fname);
@@ -135,8 +138,8 @@
     $('#age').html(p.creatinine);
     $('#height').html(p.height);
     $('#weight').html(p.weight);
-    $('#creatinine').html(p.creatinine);
-    $('#creatinine_clearance').html(p.creatinine_clearance);
+    $('#creatinine').html(creatinine);
+    $('#creatinine_clearance').html(calculate_creatinine_clearance(p, creatinine));
   };
 
 })(window);

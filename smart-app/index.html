@@ -57,13 +57,32 @@
         </tr>
       </table>
        <h2>Calculations</h2>
-       <table>
-        <tr>
-          <th>Creatinine Clearance:</th>
-          <td id='creatinine_clearance'></td>
-        </tr>
-       </table>
+         <form id="calculations">
+          <label for="creatinine">Creatinine:</label>
+          <input type="text" id="creatinine" name="creatinine"><br><br>
+          <input type="submit" value="Calculate">
+        </form>
     </div>
+
+    <script>
+      document.getElementById("calculations").onsubmit = function() {
+          extractData().then(
+          function(p) {
+            drawVisualization(p, document.calculations.creatinine.value);
+          },
+
+          //Display 'Failed to call FHIR Service' if extractData failed
+          function() {
+            $('#loading').hide();
+            $('#errors').html('<p> Failed to call FHIR Service </p>');
+          }
+        );
+      };
+
+      function myFunction() {
+        alert("The form was submitted");
+      }
+    </script>
 
     <!-- Application-level javascript-->
     <script src='./src/js/smart-app.js'></script>
