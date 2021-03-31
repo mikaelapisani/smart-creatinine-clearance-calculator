@@ -1,7 +1,9 @@
 (function(window){
   window.extractData = function() {
+    console.log('extracting data')
     var ret = $.Deferred();
     var creatinine = document.calculations.creatinine.value
+    console.log(creatinine)
 
     function onError() {
       console.log('Loading error', arguments);
