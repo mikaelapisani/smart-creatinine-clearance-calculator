@@ -2,7 +2,7 @@
   window.extractData = function() {
     console.log('extracting data')
     var ret = $.Deferred();
-    var creatinine = document.getElementById("creatinine").value
+    var creatinine = window.document.getElementById("creatinine").value
     console.log(creatinine)
 
     function onError() {
