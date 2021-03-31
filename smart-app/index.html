@@ -18,7 +18,7 @@
     <div id='holder' >
       <h2>Calculator</h2>
 
-      <h2>Patient Resource</h2>
+      <h2>Patient Data</h2>
       <table>
         <tr>
           <th>First Name:</th>
@@ -36,9 +36,6 @@
           <th>Date of Birth:</th>
           <td id='birthdate'></td>
         </tr>
-      </table>
-      <h2>Observation Resource</h2>
-      <table>
          <tr>
           <th>Age:</th>
           <td id='age'></td>
@@ -52,8 +49,8 @@
           <td id='height'></td>
         </tr>
         <tr>
-          <th>Creatinine:</th>
-          <td id='creatinine'></td>
+          <th>Creatinine Clearance:</th>
+          <td id='creatinine_clearance'></td>
         </tr>
       </table>
        <h2>Calculations</h2>
@@ -64,26 +61,7 @@
         </form>
     </div>
 
-    <script>
-      document.getElementById("calculations").onsubmit = function() {
-          extractData().then(
-          function(p) {
-            drawVisualization(p, document.calculations.creatinine.value);
-          },
-
-          //Display 'Failed to call FHIR Service' if extractData failed
-          function() {
-            $('#loading').hide();
-            $('#errors').html('<p> Failed to call FHIR Service </p>');
-          }
-        );
-      };
-
-      function myFunction() {
-        alert("The form was submitted");
-      }
-    </script>
-
+   
     <!-- Application-level javascript-->
     <script src='./src/js/smart-app.js'></script>
 
@@ -105,5 +83,25 @@
         }
       );
     </script>
+     <script>
+      document.getElementById("calculations").onsubmit = function() {
+          extractData().then(
+          function(p) {
+            drawVisualization(p, document.calculations.creatinine.value);
+          },
+
+          //Display 'Failed to call FHIR Service' if extractData failed
+          function() {
+            $('#loading').hide();
+            $('#errors').html('<p> Failed to call FHIR Service </p>');
+          }
+        );
+      };
+
+      function myFunction() {
+        alert("The form was submitted");
+      }
+    </script>
+
   </body>
 </html>

@@ -126,6 +126,18 @@
     return creatinine_clearance
   };
 
+  window.drawVisualization = function(p) {
+    $('#holder').show();
+    $('#loading').hide();
+    $('#fname').html(p.fname);
+    $('#lname').html(p.lname);
+    $('#gender').html(p.gender);
+    $('#birthdate').html(p.birthdate);
+    $('#age').html(p.age);
+    $('#height').html(p.height);
+    $('#weight').html(p.weight);
+    $('#creatinine_clearance').html(p.weight);
+  };
 
 
   window.drawVisualization = function(p, creatinine) {
@@ -135,10 +147,9 @@
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
-    $('#age').html(p.creatinine);
+    $('#age').html(p.age);
     $('#height').html(p.height);
     $('#weight').html(p.weight);
-    $('#creatinine').html(creatinine);
     $('#creatinine_clearance').html(calculate_creatinine_clearance(p, creatinine));
   };
 
