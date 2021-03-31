@@ -53,12 +53,6 @@
           <td id='creatinine_clearance'></td>
         </tr>
       </table>
-       <h2>Calculations</h2>
-         <form id="calculations">
-          <label for="creatinine">Creatinine:</label>
-          <input type="text" id="creatinine" name="creatinine"><br><br>
-          <input type="submit" value="Calculate">
-        </form>
     </div>
 
    
@@ -69,22 +63,20 @@
     <script src='./lib/js/fhir-client-v0.1.12.js'></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  
-     <script>
-      document.getElementById("calculations").onsubmit = function() {
-          extractData().then(
-          function(p) {
-            drawVisualization(p);
-          },
+    <script>
+        //Display Patient Demographics and Observations if extractData was success
+        extractData().then(
+        function(p) {
+          drawVisualization(p);
+        },
 
-          //Display 'Failed to call FHIR Service' if extractData failed
-          function() {
-            $('#loading').hide();
-            $('#errors').html('<p> Failed to call FHIR Service </p>');
-          }
-        );
-      };
+        //Display 'Failed to call FHIR Service' if extractData failed
+        function() {
+          $('#loading').hide();
+          $('#errors').html('<p> Failed to call FHIR Service </p>');
+        }
+      );
     </script>
-
   </body>
 </html>
+

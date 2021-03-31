@@ -1,6 +1,7 @@
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
+    var creatinine = document.calculations.creatinine.value
 
     function onError() {
       console.log('Loading error', arguments);
@@ -47,6 +48,8 @@
           p.lname = lname;
           p.height = parseFloat(getQuantityValue(height));
           p.weight = parseFloat(getQuantityValue(weight));
+          p.creatinine = parseFloat(creatinine)
+          p.creatinine_clearance = calculate_creatinine_clearance(p)
           console.log('p:');
           console.log(p);
           ret.resolve(p);
@@ -111,7 +114,7 @@
   }
 
 
-  function calculate_creatinine_clearance(p, creatinine){
+  function calculate_creatinine_clearance(p){
     var isfemale = 0.85;
     if (p.gender=='female'){
       isfemale = 1;
@@ -120,7 +123,7 @@
     console.log(p.age)
     console.log(isfemale)
     console.log(p.weight)
-    console.log(parseFloat(creatinine))
+    console.log(p.creatinine)
     var creatinine_clearance = 140;
 
     return creatinine_clearance
@@ -136,21 +139,8 @@
     $('#age').html(p.age);
     $('#height').html(p.height);
     $('#weight').html(p.weight);
-    $('#creatinine_clearance').html(p.weight);
-  };
-
-
-  window.drawVisualization = function(p, creatinine) {
-    $('#holder').show();
-    $('#loading').hide();
-    $('#fname').html(p.fname);
-    $('#lname').html(p.lname);
-    $('#gender').html(p.gender);
-    $('#birthdate').html(p.birthdate);
-    $('#age').html(p.age);
-    $('#height').html(p.height);
-    $('#weight').html(p.weight);
-    $('#creatinine_clearance').html(calculate_creatinine_clearance(p, creatinine));
+    $('#creatinine').html(p.creatinine);
+    $('#creatinine_clearance').html(p.creatinine_clearance);
   };
 
 })(window);
