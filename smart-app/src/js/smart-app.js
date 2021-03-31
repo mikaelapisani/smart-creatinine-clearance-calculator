@@ -55,8 +55,7 @@
           p.weight = weightValue;
           p.creatinine = parseFloat(creatinine)
           p.creatinine_clearance = calculate_creatinine_clearance(p)
-          console.log('p:');
-          console.log(p);
+
           ret.resolve(p);
         });
       } else {
@@ -120,16 +119,16 @@
 
 
   function calculate_creatinine_clearance(p){
-    var isfemale = 0.85;
+    var femaleCte = 0.85;
     if (p.gender=='female'){
       isfemale = 1;
     }
     console.log(p)
     console.log(p.age)
-    console.log(isfemale)
+    console.log(femaleCte)
     console.log(p.weight)
     console.log(p.creatinine)
-    var creatinine_clearance = 140;
+    var creatinine_clearance = (140 – age) * weight * femaleCte / (72 * p.creatinine);
 
     return creatinine_clearance
   };
