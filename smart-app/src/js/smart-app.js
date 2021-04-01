@@ -135,13 +135,6 @@
     return creatinine_clearance
   };
 
-
-smart-app.js:133 NaN
-smart-app.js:134 NaN
-smart-app.js:135 NaN
-smart-app.js:136 288
-smart-app.js:137 NaN
-
   window.drawVisualization = function(p) {
     $('#calculator').hide();
     $('#data').show();
