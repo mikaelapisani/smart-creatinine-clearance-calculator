@@ -1,6 +1,5 @@
 (function(window){
   window.extractData = function() {
-    console.log('extracting data')
     var ret = $.Deferred();
     var creatinine = window.document.getElementById("creatinine").value
 
@@ -79,7 +78,7 @@
       height: {value: ''},
       height_unit: {value: ''},
       weight:  {value: ''},
-      weight_unit: {value: ''}
+      weight_unit: {value: ''},
       creatinine:  {value: ''},
       creatinine_clearance: {value: ''},
     };

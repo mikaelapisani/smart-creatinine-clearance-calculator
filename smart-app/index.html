@@ -50,7 +50,7 @@
         <tr>
           <th>Height:</th>
           <td id='height'></td>
-          
+
         </tr>
         <tr>
           <th>Creatinine Clearance:</th>
@@ -71,8 +71,6 @@
     <script>
       function showData() {
         $("#calculator").hide();
-        var creatinine = document.getElementById("creatinine").value
-        console.log(creatinine)
         extractData().then(
           function(p) {
             drawVisualization(p);
