@@ -130,6 +130,8 @@
     console.log(femaleCte)
     console.log(p.weight)
     console.log(p.creatinine)
+    console.log((140 - age))
+    console.log(((140 - age) * p.weight))
     console.log(((140 - age) * p.weight * femaleCte))
     console.log((72 * p.creatinine))
     console.log(((140 - age) * p.weight * femaleCte) / (72 * p.creatinine))
