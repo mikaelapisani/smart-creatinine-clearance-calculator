@@ -119,9 +119,9 @@
 
 
   function calculate_creatinine_clearance(p){
-    var isfemale = 0.85;
+    var femaleCte = 1;
     if (p.gender=='female'){
-      isfemale = 1;
+      femaleCte = 0.85;
     }
     console.log(p)
     console.log(p.age)
