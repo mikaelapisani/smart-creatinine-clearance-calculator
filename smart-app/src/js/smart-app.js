@@ -3,7 +3,6 @@
     console.log('extracting data')
     var ret = $.Deferred();
     var creatinine = window.document.getElementById("creatinine").value
-    console.log(creatinine)
 
     function onError() {
       console.log('Loading error', arguments);
@@ -54,6 +53,8 @@
           var weightValue = getQuantityValue(weight);
           p.weight = weightValue;
           p.creatinine = parseFloat(creatinine)
+          p.height_unit = getUnit(height)
+          p.weight_unit = getUnit(weight)
           p.creatinine_clearance = calculate_creatinine_clearance(p)
 
           ret.resolve(p);
@@ -76,7 +77,9 @@
       birthdate: {value: ''},
       age: {value: ''},
       height: {value: ''},
+      height_unit: {value: ''}
       weight:  {value: ''},
+      weight_unit: {value: ''}
       creatinine:  {value: ''},
       creatinine_clearance: {value: ''},
     };
@@ -142,8 +145,8 @@
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
     $('#age').html(p.age);
-    $('#height').html(p.height);
-    $('#weight').html(p.weight);
+    $('#height').html(p.height + ' ' + p.height_unit);
+    $('#weight').html(p.weight + ' ' + p.weight_unit);
     $('#creatinine').html(p.creatinine);
     $('#creatinine_clearance').html(p.creatinine_clearance);
   };
