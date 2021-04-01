@@ -125,14 +125,8 @@
     if (p.gender=='female'){
       femaleCte = 0.85;
     }
-    console.log(p)
-    console.log(p.age)
-    console.log(femaleCte)
-    console.log(p.weight)
-    console.log(p.creatinine)
-    console.log((72 * p.creatinine))
     var creatinine_clearance = ((140 - p.age) * p.weight * femaleCte) / (72 * p.creatinine);
-    return creatinine_clearance
+    return creatinine_clearance.toFixed(1)
   };
 
   window.drawVisualization = function(p) {
