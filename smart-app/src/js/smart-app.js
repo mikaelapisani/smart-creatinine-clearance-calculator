@@ -121,11 +121,20 @@
 
 
   function calculate_creatinine_clearance(p){
+    var heightInches = p.height/2.54;
+    var ibw = 0;
     var femaleCte = 1;
+    
     if (p.gender=='female'){
       femaleCte = 0.85;
+      ibw = 45.5 + (2.3 * (heightInches - 60))
+    } else {
+      ibw = 50 + (2.3 * (heightInches - 60))
     }
-    var creatinine_clearance = ((140 - p.age) * p.weight * femaleCte) / (72 * p.creatinine);
+
+    var abw = ibw + 0.4 * (p.weight - ibw)
+    var creatinine_clearance = ((140 - p.age) * abw * femaleCte) / (72 * p.creatinine);
+
     return creatinine_clearance.toFixed(1)
   };
 
