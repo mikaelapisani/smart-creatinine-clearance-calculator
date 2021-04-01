@@ -43,15 +43,15 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           var dob = new Date(patient.birthDate);
-          p.age = parseFloat(calculateAge(dob));
+          p.age = parseFloat(calculateAge(dob)).toFixed(1);
           p.gender = patient.gender;
           p.fname = fname;
           p.lname = lname;
           var heightValue = getQuantityValue(height);
-          p.height = parseFloat(heightValue);
+          p.height = parseFloat(heightValue).toFixed(1);
           var weightValue = getQuantityValue(weight);
-          p.weight = weightValue;
-          p.creatinine = parseFloat(creatinine)
+          p.weight = weightValue.toFixed(1);
+          p.creatinine = parseFloat(creatinine).toFixed(1);
           p.height_unit = getUnit(height)
           p.weight_unit = getUnit(weight)
           p.creatinine_clearance = calculate_creatinine_clearance(p)
@@ -130,8 +130,10 @@
     console.log(femaleCte)
     console.log(p.weight)
     console.log(p.creatinine)
+    console.log(((140 - age) * weight * femaleCte))
+    console.log((72 * p.creatinine))
+    console.log(((140 - age) * weight * femaleCte) / (72 * p.creatinine))
     var creatinine_clearance = ((140 - age) * weight * femaleCte) / (72 * p.creatinine);
-
     return creatinine_clearance
   };
 
