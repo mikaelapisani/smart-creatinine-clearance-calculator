@@ -130,14 +130,17 @@
     console.log(femaleCte)
     console.log(p.weight)
     console.log(p.creatinine)
-    console.log((140 - age))
-    console.log(((140 - age) * p.weight))
-    console.log(((140 - age) * p.weight * femaleCte))
     console.log((72 * p.creatinine))
-    console.log(((140 - age) * p.weight * femaleCte) / (72 * p.creatinine))
-    var creatinine_clearance = ((140 - age) * p.weight * femaleCte) / (72 * p.creatinine);
+    var creatinine_clearance = ((140 - p.age) * p.weight * femaleCte) / (72 * p.creatinine);
     return creatinine_clearance
   };
+
+
+smart-app.js:133 NaN
+smart-app.js:134 NaN
+smart-app.js:135 NaN
+smart-app.js:136 288
+smart-app.js:137 NaN
 
   window.drawVisualization = function(p) {
     $('#calculator').hide();
