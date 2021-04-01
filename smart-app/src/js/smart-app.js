@@ -130,10 +130,10 @@
     console.log(femaleCte)
     console.log(p.weight)
     console.log(p.creatinine)
-    console.log(((140 - age) * weight * femaleCte))
+    console.log(((140 - age) * p.weight * femaleCte))
     console.log((72 * p.creatinine))
-    console.log(((140 - age) * weight * femaleCte) / (72 * p.creatinine))
-    var creatinine_clearance = ((140 - age) * weight * femaleCte) / (72 * p.creatinine);
+    console.log(((140 - age) * p.weight * femaleCte) / (72 * p.creatinine))
+    var creatinine_clearance = ((140 - age) * p.weight * femaleCte) / (72 * p.creatinine);
     return creatinine_clearance
   };
 
