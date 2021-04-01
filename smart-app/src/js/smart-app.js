@@ -43,7 +43,7 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           var dob = new Date(patient.birthDate);
-          p.age = parseFloat(calculateAge(dob)).toFixed(1);
+          p.age = parseInt(calculateAge(dob));
           p.gender = patient.gender;
           p.fname = fname;
           p.lname = lname;
