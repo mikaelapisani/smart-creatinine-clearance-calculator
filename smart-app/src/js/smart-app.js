@@ -77,7 +77,7 @@
       birthdate: {value: ''},
       age: {value: ''},
       height: {value: ''},
-      height_unit: {value: ''}
+      height_unit: {value: ''},
       weight:  {value: ''},
       weight_unit: {value: ''}
       creatinine:  {value: ''},
